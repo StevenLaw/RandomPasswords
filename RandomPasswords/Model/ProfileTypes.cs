@@ -1,6 +1,9 @@
 ﻿namespace RandomPasswords.Model
 {
-    public struct ProfileTypes
+	/// <summary>
+	/// Itemizes the default profiles.
+	/// </summary>
+	public struct ProfileTypes
 	{
 		public const string All = "All";
 		public const string Default = "Default";
