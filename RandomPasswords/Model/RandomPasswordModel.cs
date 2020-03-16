@@ -17,7 +17,7 @@ namespace RandomPasswords.Model
         private int minimumSeparators = 0;
         private int maximiumSeparators = 1;
         private SeperatorsMode seperatorsMode;
-        private string specialFormat = "wswsw";
+        private string specialFormat = "WsWsW";
 
         /// <summary>
         /// Gets or sets the number of passwords.
@@ -258,13 +258,20 @@ namespace RandomPasswords.Model
             {
                 switch (item)
                 {
+                    case SpecialItem.CapitalWord:
+                        sb.Append(GetWord(r, isCapitalized: true));
+                        break;
                     case SpecialItem.Number:
+                        sb.Append(GetSeperator(r, SeperatorsMode.Numbers));
                         break;
                     case SpecialItem.Seperator:
+                        sb.Append(GetSeperator(r, SeperatorsMode.NumbersAndSpecial));
                         break;
                     case SpecialItem.Symbol:
+                        sb.Append(GetSeperator(r, SeperatorsMode.Special));
                         break;
                     case SpecialItem.Word:
+                        sb.Append(GetWord(r));
                         break;
                 }
             }
@@ -306,6 +313,20 @@ namespace RandomPasswords.Model
                 tmp += characters[r.Next(characters.Length)];
             }
             return tmp;
+        }
+
+        /// <summary>
+        /// Gets the seperator.
+        /// </summary>
+        /// <param name="r">The r.</param>
+        /// <param name="mode">The mode.</param>
+        /// <returns>
+        /// the seperator.
+        /// </returns>
+        private char GetSeperator(Random r, SeperatorsMode mode)
+        {
+            char[] characters = SpecialCharacterList.GetCharList(SpecialCharacters, mode);
+            return characters[r.Next(characters.Length)];
         }
     }
 }

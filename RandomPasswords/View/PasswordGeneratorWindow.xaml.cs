@@ -1,4 +1,5 @@
-﻿using RandomPasswords.ViewModel;
+﻿using RandomPasswords.Model;
+using RandomPasswords.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

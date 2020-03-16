@@ -115,6 +115,7 @@ namespace RandomPasswords.ViewModel
 		/// The clear special format command.
 		/// </value>
 		public ClearSpecialFormatCommand ClearSpecialFormatCommand { get; set; }
+		public GetSpecialPasswordsCommand GetSpecialPasswordsCommand { get; set; }
 
 		/// <summary>
 		/// Occurs when a property value changes.
@@ -131,6 +132,7 @@ namespace RandomPasswords.ViewModel
 			SetProfileCommand = new SetProfileCommand(this);
 			AddSpecialFormatItemCommand = new AddSpecialFormatItemCommand(this);
 			ClearSpecialFormatCommand = new ClearSpecialFormatCommand(this);
+			GetSpecialPasswordsCommand = new GetSpecialPasswordsCommand(this);
 		}
 
 		/// <summary>

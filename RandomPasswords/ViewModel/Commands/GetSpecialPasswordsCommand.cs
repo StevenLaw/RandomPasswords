@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace RandomPasswords.ViewModel.Commands
 {
-    public class GetPasswordsCommand : ICommand
+    public class GetSpecialPasswordsCommand : ICommand
     {
         /// <summary>
         /// Gets or sets the vm.
@@ -19,13 +19,13 @@ namespace RandomPasswords.ViewModel.Commands
         /// <summary>
         /// Occurs when changes occur that affect whether or not the command should execute.
         /// </summary>
-        public event EventHandler CanExecuteChanged { add { } remove { } }
+        public event EventHandler CanExecuteChanged;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetPasswordsCommand"/> class.
+        /// Initializes a new instance of the <see cref="GetSpecialPasswordsCommand"/> class.
         /// </summary>
         /// <param name="vm">The vm.</param>
-        public GetPasswordsCommand(RandomPasswordViewModel vm)
+        public GetSpecialPasswordsCommand(RandomPasswordViewModel vm)
         {
             VM = vm;
         }
@@ -49,8 +49,8 @@ namespace RandomPasswords.ViewModel.Commands
         public void Execute(object parameter)
         {
             VM.Passwords.Clear();
-            string[] passwords = VM.RandomPassword.GetPasswords();
-            foreach(string password in passwords)
+            string[] passwords = VM.RandomPassword.GetSpecialPasswords();
+            foreach (string password in passwords)
             {
                 VM.Passwords.Add(password);
                 CommandManager.InvalidateRequerySuggested();

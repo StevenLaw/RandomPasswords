@@ -107,6 +107,7 @@ namespace RandomPasswords.Model.Data
                 list.AddRange(new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' });
             if (mode == SeperatorsMode.NumbersAndSpecial || mode == SeperatorsMode.Special) 
                 list.AddRange(specialCharacters.Where(c => c.IsAvailable).Select(c => c.Character));
+
             return list.ToArray();
         }
     }
