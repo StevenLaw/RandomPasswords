@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace RandomPasswords.ViewModel.Commands
 {
-    public class SetProfileCommand : ICommand
+    public class ClearSpecialFormatCommand : ICommand
     {
         /// <summary>
         /// Gets or sets the vm.
@@ -22,10 +18,10 @@ namespace RandomPasswords.ViewModel.Commands
         public event EventHandler CanExecuteChanged;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SetProfileCommand"/> class.
+        /// Initializes a new instance of the <see cref="ClearSpecialFormatCommand"/> class.
         /// </summary>
         /// <param name="vm">The vm.</param>
-        public SetProfileCommand(RandomPasswordViewModel vm)
+        public ClearSpecialFormatCommand(RandomPasswordViewModel vm)
         {
             VM = vm;
         }
@@ -48,10 +44,7 @@ namespace RandomPasswords.ViewModel.Commands
         /// <param name="parameter">Data used by the command.  If the command does not require data to be passed, this object can be set to <see langword="null" />.</param>
         public void Execute(object parameter)
         {
-            if (parameter is string profile)
-            {
-                VM.SetSelectedProfile(profile);
-            }
+            VM.RandomPassword.SpecialFormat = "";
         }
     }
 }

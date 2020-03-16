@@ -1,5 +1,8 @@
 ﻿namespace RandomPasswords.Model
 {
+    /// <summary>
+    /// Contains special format item characters.
+    /// </summary>
     public struct SpecialItem
     {
         public const char Word = 'w';
