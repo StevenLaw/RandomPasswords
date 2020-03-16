@@ -30,11 +30,7 @@
             <Setter Property="Margin" Value="5"/>
         </Style>
         <BitmapImage x:Key="KeyIcon" UriSource="Images/KeyIcon.ico"/>
+        <BitmapImage x:Key="KeyLogo" UriSource="Images/KeyIcon.png"/>
         <vm:RandomPasswordViewModel x:Key="vm"/>
-        <ObjectDataProvider x:Key="enmPositions" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="enm:SeperatorsMode"></x:Type>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
     </Application.Resources>
 </Application>

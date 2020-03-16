@@ -14,7 +14,7 @@ namespace RandomPasswords.Model
         private int numberOfWords = 3;
         private int minimumSeparators = 0;
         private int maximiumSeparators = 1;
-        private SeperatorsMode seperatorsMode;
+        private SeperatorsMode separatorsMode;
         private string specialFormat = "WsWsW";
 
         /// <summary>
@@ -55,12 +55,12 @@ namespace RandomPasswords.Model
         /// <value>
         /// The seperators mode.
         /// </value>
-        public SeperatorsMode SeperatorsMode
+        public SeperatorsMode SeparatorsMode
         {
-            get { return seperatorsMode; }
+            get { return separatorsMode; }
             set
             {
-                seperatorsMode = value;
+                separatorsMode = value;
                 NotifyPropertyChanged();
             }
         }
@@ -304,7 +304,7 @@ namespace RandomPasswords.Model
         {
             string tmp = string.Empty;
             int amount = r.Next(MinimumSeparators, MaximiumSeparators + 1);
-            char[] characters = SpecialCharacterList.GetCharList(SpecialCharacters, seperatorsMode);
+            char[] characters = SpecialCharacterList.GetCharList(SpecialCharacters, separatorsMode);
 
             for (int i = 0; i < amount; i++)
             {

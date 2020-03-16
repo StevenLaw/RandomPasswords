@@ -9,7 +9,7 @@ namespace RandomPasswords.ViewModel
 {
 	public class RandomPasswordViewModel : INotifyPropertyChanged
     {
-		private string seperator = "\n";
+		private string separator = "\n";
 		private string selectedProfile = ProfileTypes.Default;
 
 		/// <summary>
@@ -18,20 +18,20 @@ namespace RandomPasswords.ViewModel
 		/// <value>
 		/// The seperator.
 		/// </value>
-		public string Seperator
+		public string Separator
 		{
 			get 
 			{
-				if (seperator == "\n")
+				if (separator == "\n")
 					return "\\n";
-				return seperator; 
+				return separator; 
 			}
 			set 
 			{
 				if (value == "\\n")
-					seperator = "\n";
+					separator = "\n";
 				else
-					seperator = value;
+					separator = value;
 				NotifyPropertyChanged();
 			}
 		}
@@ -165,7 +165,7 @@ namespace RandomPasswords.ViewModel
 		/// </returns>
 		public string GetSeperator()
 		{
-			return seperator;
+			return separator;
 		}
 
 		/// <summary>

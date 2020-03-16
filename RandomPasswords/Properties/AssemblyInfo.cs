@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RandomPasswords")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Random Passwords")]
+[assembly: AssemblyDescription("A tool to generate more typeable passwords by using a large dictionary of words and connecting them with symbols and/or numbers.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RandomPasswords")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyProduct("Random Passwords")]
+[assembly: AssemblyCopyright("Copyright © Steven Law 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

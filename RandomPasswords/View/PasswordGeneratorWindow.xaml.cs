@@ -48,5 +48,11 @@ namespace RandomPasswords.View
         {
             Close();
         }
+
+        private void AboutCommand_Execute(object sender, ExecutedRoutedEventArgs e)
+        {
+            AboutWindow aboutWindow = new AboutWindow();
+            aboutWindow.ShowDialog();
+        }
     }
 }
