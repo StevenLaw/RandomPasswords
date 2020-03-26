@@ -9,10 +9,18 @@
         Icon="{StaticResource KeyIcon}"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+    </Window.Resources>
     <StackPanel Orientation="Horizontal">
         <Image Source="{StaticResource KeyLogo}" Width="256" Height="256"/>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -28,19 +36,25 @@
             <Label x:Name="lblCopyright"
                    Grid.Row="2"/>
             <TextBlock x:Name="tblkDescription" 
-                       Width="250" 
-                       Margin="5"
                        TextWrapping="Wrap"
                        Grid.Row="3"/>
+            <TextBlock Grid.Row="4">
+                Icon generated from 
+                <Hyperlink
+                    NavigateUri="https://iconmonstr.com/"
+                    RequestNavigate="Hyperlink_RequestNavigate">
+                    iconmonstr
+                </Hyperlink>
+            </TextBlock>
             <StackPanel 
                 Orientation="Horizontal" 
                 HorizontalAlignment="Right" 
                 VerticalAlignment="Bottom"
-                Grid.Row="4">
+                Grid.Row="5">
                 <Button x:Name="btnClose" 
                         Content="Close" 
                         Width="50"
-                        Click="btnClose_Click"/>
+                        Click="BtnClose_Click"/>
             </StackPanel>
         </Grid>
     </StackPanel>
