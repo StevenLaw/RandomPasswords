@@ -61,7 +61,7 @@ namespace RandomPasswords.View.UserControls
             InitializeComponent();
         }
 
-        private void lstMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void LstMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (DataContext is RandomPasswordViewModel vm)
             {

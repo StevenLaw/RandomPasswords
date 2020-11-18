@@ -154,22 +154,13 @@ namespace RandomPasswords.Model
         /// <param name="profileName">Name of the profile.</param>
         public void UpdateCharacterProfile(string profileName)
         {
-            char[] profile;
-            switch (profileName)
+            char[] profile = profileName switch
             {
-                case ProfileTypes.All:
-                    profile = SpecialCharacterList.Profiles.All;
-                    break;
-                case ProfileTypes.JustSpace:
-                    profile = SpecialCharacterList.Profiles.JustSpace;
-                    break;
-                case ProfileTypes.None:
-                    profile = SpecialCharacterList.Profiles.None;
-                    break;
-                default:
-                    profile = SpecialCharacterList.Profiles.DefaultCharacters;
-                    break;
-            }
+                ProfileTypes.All => SpecialCharacterList.Profiles.All,
+                ProfileTypes.JustSpace => SpecialCharacterList.Profiles.JustSpace,
+                ProfileTypes.None => SpecialCharacterList.Profiles.None,
+                _ => SpecialCharacterList.Profiles.DefaultCharacters,
+            };
             foreach (SpecialCharacter c in SpecialCharacters)
             {
                 if (profile.Contains(c.Character))
@@ -285,11 +276,11 @@ namespace RandomPasswords.Model
         /// <returns>
         /// the word.
         /// </returns>
-        private string GetWord(Random r, bool isCapitalized = false)
+        private static string GetWord(Random r, bool isCapitalized = false)
         {
             string tmp = Words.Items[r.Next(Words.Items.Length)];
             if (isCapitalized)
-                return tmp.First().ToString().ToUpper() + tmp.Substring(1);
+                return tmp.First().ToString().ToUpper() + tmp[1..];
             else return tmp;
         }
 

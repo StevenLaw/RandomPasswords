@@ -8,6 +8,6 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <ListView x:Name="lstMain"
               SelectionMode="Extended"
-              SelectionChanged="lstMain_SelectionChanged"
+              SelectionChanged="LstMain_SelectionChanged"
               MaxHeight="400"/>
 </UserControl>
