@@ -10,6 +10,10 @@
         public const char Symbol = '*';
         public const char Number = '0';
         public const char Seperator = 's';
-        public static char[] AvailableItems = new char[] { Word, CapitalWord, Symbol, Number, Seperator };
+        public const char Space = '‿';
+        public const char Underscore = '_';
+        public const char Any = '?';
+        public static char[] AvailableItems = new char[] 
+        { Word, CapitalWord, Symbol, Number, Seperator, Space, Underscore, Any };
     }
 }

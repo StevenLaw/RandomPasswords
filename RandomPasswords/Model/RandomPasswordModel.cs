@@ -1,5 +1,6 @@
 ﻿using RandomPasswords.Model.Data;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace RandomPasswords.Model
         private int maximiumSeparators = 1;
         private SeperatorsMode separatorsMode;
         private string specialFormat = "WsWsW";
+        private const string lettersAndNumbers = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
         /// <summary>
         /// Gets or sets the number of passwords.
@@ -262,6 +264,15 @@ namespace RandomPasswords.Model
                     case SpecialItem.Word:
                         sb.Append(GetWord(r));
                         break;
+                    case SpecialItem.Space:
+                        sb.Append(' ');
+                        break;
+                    case SpecialItem.Underscore:
+                        sb.Append('_');
+                        break;
+                    case SpecialItem.Any:
+                        sb.Append(GetAnyCharacter(r, SeperatorsMode.Special));
+                        break;
                 }
             }
 
@@ -316,6 +327,22 @@ namespace RandomPasswords.Model
         {
             char[] characters = SpecialCharacterList.GetCharList(SpecialCharacters, mode);
             return characters[r.Next(characters.Length)];
+        }
+
+        /// <summary>
+        /// Gets any character.
+        /// </summary>
+        /// <param name="r">The r.</param>
+        /// <param name="mode">The mode.</param>
+        /// <returns>
+        /// the random character.
+        /// </returns>
+        private char GetAnyCharacter(Random r, SeperatorsMode mode)
+        {
+            var list = new List<char>();
+            list.AddRange(lettersAndNumbers.ToArray());
+            list.AddRange(SpecialCharacterList.GetCharList(SpecialCharacters, mode));
+            return list[r.Next(list.Count)];
         }
     }
 }

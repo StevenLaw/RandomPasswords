@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace RandomPasswords.ViewModel.Commands
@@ -19,7 +15,7 @@ namespace RandomPasswords.ViewModel.Commands
         /// <summary>
         /// Occurs when changes occur that affect whether or not the command should execute.
         /// </summary>
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged { add { } remove { } }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SetProfileCommand"/> class.
