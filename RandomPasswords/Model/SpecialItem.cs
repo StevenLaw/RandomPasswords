@@ -13,7 +13,8 @@
         public const char Space = '‿';
         public const char Underscore = '_';
         public const char Any = '?';
-        public static char[] AvailableItems = new char[] 
+
+        public static readonly char[] AvailableItems = new char[]
         { Word, CapitalWord, Symbol, Number, Seperator, Space, Underscore, Any };
     }
 }

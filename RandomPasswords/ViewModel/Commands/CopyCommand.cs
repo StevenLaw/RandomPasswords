@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -11,16 +8,17 @@ namespace RandomPasswords.ViewModel.Commands
     public class CopyCommand : ICommand
     {
         public RandomPasswordViewModel VM { get; set; }
-        public event EventHandler CanExecuteChanged 
-        { 
-            add 
+
+        public event EventHandler CanExecuteChanged
+        {
+            add
             {
                 CommandManager.RequerySuggested += value;
-            } 
-            remove 
+            }
+            remove
             {
                 CommandManager.RequerySuggested -= value;
-            } 
+            }
         }
 
         public CopyCommand(RandomPasswordViewModel vm)
@@ -31,7 +29,7 @@ namespace RandomPasswords.ViewModel.Commands
         public bool CanExecute(object parameter)
         {
             if (VM.SelectedPasswords != null)
-                return VM.SelectedPasswords.Count() > 0;
+                return VM.SelectedPasswords.Count > 0;
             return false;
         }
 
@@ -43,7 +41,7 @@ namespace RandomPasswords.ViewModel.Commands
             }
         }
 
-        public void RaiseCanExecuteChanged()
+        public static void RaiseCanExecuteChanged()
         {
             CommandManager.InvalidateRequerySuggested();
         }

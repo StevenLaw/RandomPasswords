@@ -10,6 +10,7 @@ namespace RandomPasswords.Model
     {
         [Description("Numbers & Special Characters")]
         NumbersAndSpecial,
+
         Special,
         Numbers
     }

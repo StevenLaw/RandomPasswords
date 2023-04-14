@@ -11,13 +11,13 @@ namespace RandomPasswords.Model
 {
     public class RandomPasswordModel : INotifyPropertyChanged
     {
-        private int numberOfPasswords = 10;
-        private int numberOfWords = 3;
-        private int minimumSeparators = 0;
-        private int maximiumSeparators = 1;
-        private SeperatorsMode separatorsMode;
-        private string specialFormat = "WsWsW";
-        private const string lettersAndNumbers = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        private int _numberOfPasswords = 10;
+        private int _numberOfWords = 3;
+        private int _minimumSeparators = 0;
+        private int _maximiumSeparators = 1;
+        private SeperatorsMode _separatorsMode;
+        private string _specialFormat = "WsWsW";
+        private const string _lettersAndNumbers = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
         /// <summary>
         /// Gets or sets the number of passwords.
@@ -27,10 +27,10 @@ namespace RandomPasswords.Model
         /// </value>
         public int NumberOfPasswords
         {
-            get { return numberOfPasswords; }
+            get { return _numberOfPasswords; }
             set
             {
-                numberOfPasswords = value;
+                _numberOfPasswords = value;
                 NotifyPropertyChanged();
             }
         }
@@ -43,10 +43,10 @@ namespace RandomPasswords.Model
         /// </value>
         public int NumberOfWords
         {
-            get { return numberOfWords; }
+            get { return _numberOfWords; }
             set
             {
-                numberOfWords = value;
+                _numberOfWords = value;
                 NotifyPropertyChanged();
             }
         }
@@ -59,10 +59,10 @@ namespace RandomPasswords.Model
         /// </value>
         public SeperatorsMode SeparatorsMode
         {
-            get { return separatorsMode; }
+            get { return _separatorsMode; }
             set
             {
-                separatorsMode = value;
+                _separatorsMode = value;
                 NotifyPropertyChanged();
             }
         }
@@ -75,10 +75,10 @@ namespace RandomPasswords.Model
         /// </value>
         public int MinimumSeparators
         {
-            get { return minimumSeparators; }
+            get { return _minimumSeparators; }
             set
             {
-                minimumSeparators = value;
+                _minimumSeparators = value;
                 NotifyPropertyChanged();
             }
         }
@@ -91,10 +91,10 @@ namespace RandomPasswords.Model
         /// </value>
         public int MaximiumSeparators
         {
-            get { return maximiumSeparators; }
+            get { return _maximiumSeparators; }
             set
             {
-                maximiumSeparators = value;
+                _maximiumSeparators = value;
                 NotifyPropertyChanged();
             }
         }
@@ -107,9 +107,10 @@ namespace RandomPasswords.Model
         /// </value>
         public string SpecialFormat
         {
-            get { return specialFormat; }
-            set { 
-                specialFormat = new string(value.
+            get { return _specialFormat; }
+            set
+            {
+                _specialFormat = new string(value.
                     ToArray().
                     Where(c => SpecialItem.AvailableItems.Contains(c)).
                     ToArray());
@@ -185,9 +186,9 @@ namespace RandomPasswords.Model
         public string[] GetPasswords()
         {
             string[] passwords = new string[NumberOfPasswords];
-            Random r = new Random();
+            Random r = new();
 
-            for (int i = 0; i < numberOfPasswords; i++)
+            for (int i = 0; i < _numberOfPasswords; i++)
             {
                 passwords[i] = GetPassword(r);
             }
@@ -204,9 +205,9 @@ namespace RandomPasswords.Model
         public string[] GetSpecialPasswords()
         {
             string[] passwords = new string[NumberOfPasswords];
-            Random r = new Random();
+            Random r = new();
 
-            for (int i = 0; i < numberOfPasswords; i++)
+            for (int i = 0; i < _numberOfPasswords; i++)
             {
                 passwords[i] = GetSpecialPassword(r);
             }
@@ -223,9 +224,9 @@ namespace RandomPasswords.Model
         /// </returns>
         public string GetPassword(Random r)
         {
-            StringBuilder sb = new StringBuilder(GetWord(r, true));
+            StringBuilder sb = new(GetWord(r, true));
 
-            for (int i = 0; i < numberOfWords - 1; i++)
+            for (int i = 0; i < _numberOfWords - 1; i++)
             {
                 sb.Append(GetSeparators(r));
                 sb.Append(GetWord(r, true));
@@ -243,33 +244,40 @@ namespace RandomPasswords.Model
         /// </returns>
         public string GetSpecialPassword(Random r)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
-            foreach (char item in specialFormat)
+            foreach (char item in _specialFormat)
             {
                 switch (item)
                 {
                     case SpecialItem.CapitalWord:
                         sb.Append(GetWord(r, isCapitalized: true));
                         break;
+
                     case SpecialItem.Number:
                         sb.Append(GetSeperator(r, SeperatorsMode.Numbers));
                         break;
+
                     case SpecialItem.Seperator:
                         sb.Append(GetSeperator(r, SeperatorsMode.NumbersAndSpecial));
                         break;
+
                     case SpecialItem.Symbol:
                         sb.Append(GetSeperator(r, SeperatorsMode.Special));
                         break;
+
                     case SpecialItem.Word:
                         sb.Append(GetWord(r));
                         break;
+
                     case SpecialItem.Space:
                         sb.Append(' ');
                         break;
+
                     case SpecialItem.Underscore:
                         sb.Append('_');
                         break;
+
                     case SpecialItem.Any:
                         sb.Append(GetAnyCharacter(r, SeperatorsMode.Special));
                         break;
@@ -306,7 +314,7 @@ namespace RandomPasswords.Model
         {
             string tmp = string.Empty;
             int amount = r.Next(MinimumSeparators, MaximiumSeparators + 1);
-            char[] characters = SpecialCharacterList.GetCharList(SpecialCharacters, separatorsMode);
+            char[] characters = SpecialCharacterList.GetCharList(SpecialCharacters, _separatorsMode);
 
             for (int i = 0; i < amount; i++)
             {
@@ -340,7 +348,7 @@ namespace RandomPasswords.Model
         private char GetAnyCharacter(Random r, SeperatorsMode mode)
         {
             var list = new List<char>();
-            list.AddRange(lettersAndNumbers.ToArray());
+            list.AddRange(_lettersAndNumbers.ToArray());
             list.AddRange(SpecialCharacterList.GetCharList(SpecialCharacters, mode));
             return list[r.Next(list.Count)];
         }
