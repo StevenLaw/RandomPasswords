@@ -8,7 +8,7 @@
     /// </remarks>
     public struct Words
     {
-        public static string[] Items = new string[] 
+        public static string[] Items = new string[]
         {
             "aah",
             "aardvark",

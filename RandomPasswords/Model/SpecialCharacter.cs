@@ -1,46 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RandomPasswords.Model
 {
     public class SpecialCharacter : INotifyPropertyChanged
     {
-        private char character;
-        private bool isAvailable;
-        private string name;
+        private char _character;
+        private bool _isAvailable;
+        private string _name;
 
         public char Character
         {
-            get { return character; }
+            get { return _character; }
             set
             {
-                character = value;
+                _character = value;
                 NotifyPropertyChanged();
             }
         }
 
         public string Name
         {
-            get { return name; }
+            get { return _name; }
             set
             {
-                name = value;
+                _name = value;
                 NotifyPropertyChanged();
             }
         }
 
-
         public bool IsAvailable
         {
-            get { return isAvailable; }
+            get { return _isAvailable; }
             set
             {
-                isAvailable = value;
+                _isAvailable = value;
                 NotifyPropertyChanged();
             }
         }

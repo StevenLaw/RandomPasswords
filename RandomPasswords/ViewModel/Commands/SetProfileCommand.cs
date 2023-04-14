@@ -12,10 +12,12 @@ namespace RandomPasswords.ViewModel.Commands
         /// The vm.
         /// </value>
         public RandomPasswordViewModel VM { get; set; }
+
         /// <summary>
         /// Occurs when changes occur that affect whether or not the command should execute.
         /// </summary>
-        public event EventHandler CanExecuteChanged { add { } remove { } }
+        public event EventHandler CanExecuteChanged
+        { add { } remove { } }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SetProfileCommand"/> class.

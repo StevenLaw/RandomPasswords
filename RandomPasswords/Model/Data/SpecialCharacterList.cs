@@ -8,7 +8,7 @@ namespace RandomPasswords.Model.Data
         /// <summary>
         /// The character names
         /// </summary>
-        public static readonly Dictionary<char, string> CharacterNames = new Dictionary<char, string>
+        public static readonly Dictionary<char, string> CharacterNames = new()
         {
             {' ', "Space"},
             {'!', "Exclamation"},
@@ -45,25 +45,24 @@ namespace RandomPasswords.Model.Data
             {'~', "Tilde"}
         };
 
-
-
         /// <summary>
         /// Preset special character profiles
         /// </summary>
-        public struct Profiles
+        public readonly struct Profiles
         {
             public static readonly char[] All = new char[]
             {
                 ' ','!','”','#','$','%','&','’','(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~'
             };
+
             public static readonly char[] DefaultCharacters = new char[]
             {
                 ' ', '!', '#', '$', '%', '&', '^', '*', '-', '_', '=', '+', ',', '.', '?', '~', ';', ':'
             };
-            public static readonly char[] JustSpace = new char[] { ' ' };
-            public static readonly char[] None = new char[] { };
-        }
 
+            public static readonly char[] JustSpace = new char[] { ' ' };
+            public static readonly char[] None = System.Array.Empty<char>();
+        }
 
         /// <summary>
         /// Gets the special characters.
@@ -74,7 +73,7 @@ namespace RandomPasswords.Model.Data
         /// </returns>
         public static IEnumerable<SpecialCharacter> GetSpecialCharacters(IEnumerable<char> allowedCharacters)
         {
-            List<SpecialCharacter> list = new List<SpecialCharacter>();
+            List<SpecialCharacter> list = new();
 
             foreach (KeyValuePair<char, string> item in CharacterNames)
             {
@@ -99,10 +98,10 @@ namespace RandomPasswords.Model.Data
         /// </returns>
         public static char[] GetCharList(IEnumerable<SpecialCharacter> specialCharacters, SeperatorsMode mode)
         {
-            List<char> list = new List<char>();
+            List<char> list = new();
             if (mode == SeperatorsMode.Numbers || mode == SeperatorsMode.NumbersAndSpecial)
                 list.AddRange(new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' });
-            if (mode == SeperatorsMode.NumbersAndSpecial || mode == SeperatorsMode.Special) 
+            if (mode == SeperatorsMode.NumbersAndSpecial || mode == SeperatorsMode.Special)
                 list.AddRange(specialCharacters.Where(c => c.IsAvailable).Select(c => c.Character));
 
             return list.ToArray();

@@ -5,56 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RandomPasswords.View"
         mc:Ignorable="d"
-        Title="About Random Passwords" 
+        Title="About Random Passwords"
         Icon="{StaticResource KeyIcon}"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight">
     <Window.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Width" Value="250"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Width" Value="250" />
+            <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
     </Window.Resources>
     <StackPanel Orientation="Horizontal">
-        <Image Source="{StaticResource KeyLogo}" Width="256" Height="256"/>
+        <Image Source="{StaticResource KeyLogo}" Width="256" Height="256" />
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Label x:Name="lblProduct" 
-                   FontWeight="Bold" 
-                   FontSize="24" 
-                   HorizontalAlignment="Center"/>
+            <Label x:Name="lblProduct"
+                   FontWeight="Bold"
+                   FontSize="24"
+                   HorizontalAlignment="Center" />
             <Label x:Name="lblVersion"
-                   Grid.Row="1"/>
+                   Grid.Row="1" />
             <Label x:Name="lblCopyright"
-                   Grid.Row="2"/>
-            <TextBlock x:Name="tblkDescription" 
+                   Grid.Row="2" />
+            <TextBlock x:Name="tblkDescription"
                        TextWrapping="Wrap"
-                       Grid.Row="3"/>
+                       Grid.Row="3" />
             <TextBlock Grid.Row="4">
-                Icon generated from 
+                Icon generated from
                 <Hyperlink
                     NavigateUri="https://iconmonstr.com/"
                     RequestNavigate="Hyperlink_RequestNavigate">
                     iconmonstr
                 </Hyperlink>
             </TextBlock>
-            <StackPanel 
-                Orientation="Horizontal" 
-                HorizontalAlignment="Right" 
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
                 Grid.Row="5">
-                <Button x:Name="btnClose" 
-                        Content="Close" 
+                <Button x:Name="btnClose"
+                        Content="Close"
                         Width="50"
-                        Click="BtnClose_Click"/>
+                        Click="BtnClose_Click" />
             </StackPanel>
         </Grid>
     </StackPanel>
